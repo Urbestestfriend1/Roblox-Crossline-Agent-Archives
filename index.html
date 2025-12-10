@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Crossline – Agent Archive</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>CROSSLINE ARCHIVAL NETWORK</h1>
+        <p>Authorized Personnel Only</p>
+    </header>
+
+    <!-- Faction Tabs -->
+    <div class="faction-tabs">
+        <button class="tab active" data-target="alta"> 
+            <img src="images/alta_icon.png"> ALTA
+        </button>
+        <button class="tab" data-target="phnx">
+            <img src="images/phnx_icon.png"> PHNX
+        </button>
+    </div>
+
+    <!-- ALTA Folder Grid -->
+    <section id="alta" class="grid active">
+        <a class="folder" href="agents/DavidCastillo.html">David Castillo</a>
+        <a class="folder" href="agents/AaronReeves.html">Aaron Reeves</a>
+        <a class="folder" href="agents/LenaHalstrom.html">Lena Halstrom</a>
+        <a class="folder" href="agents/KaiVoss.html">Kai Voss</a>
+        <a class="folder" href="agents/SamuelBaird.html">Samuel Baird</a>
+    </section>
+
+    <!-- PHNX Grid (empty for now) -->
+    <section id="phnx" class="grid">
+        <p class="placeholder">No PHNX agents uploaded yet.</p>
+    </section>
+
+<script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll(".tab");
+    const grids = document.querySelectorAll(".grid");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            grids.forEach(g => g.classList.remove("active"));
+            document.getElementById(tab.dataset.target).classList.add("active");
+        });
+    });
+
+  // Folder click "open" animation delay
+document.querySelectorAll(".folder").forEach(folder => {
+    folder.addEventListener("click", e => {
+        e.preventDefault();
+
+        folder.classList.add("opening");
+
+        setTimeout(() => {
+            window.location.href = folder.getAttribute("href");
+        }, 250); // delay matches animation
+    });
+});
+
+</script>
+
+</body>
+</html>

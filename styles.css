@@ -166,3 +166,9 @@ header {
     padding: 0 8px;
     border-radius: 3px;
 }
+
+.folder.opening {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.45);
+}
+

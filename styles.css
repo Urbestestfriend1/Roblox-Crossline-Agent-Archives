@@ -1,0 +1,168 @@
+/* === Base Layout === */
+body {
+    background: #0d0d0f;
+    color: #e3e3e3;
+    font-family: Consolas, monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0 20px;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: headerFade 1.3s ease-out forwards;
+}
+
+/* === Header Animation === */
+@keyframes headerFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === Tabs === */
+.faction-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.9s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.tab {
+    background: #1c1c20;
+    border: 1px solid #3d3d45;
+    padding: 10px 25px;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #e3e3e3;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.25s;
+}
+
+.tab img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.tab:hover {
+    background: #2a2a30;
+}
+
+.tab.active {
+    background: #34343b;
+    border-color: #6d6d78;
+}
+
+/* === Grid Animation === */
+.grid {
+    display: none;
+    padding: 20px;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.grid.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* === Folder Buttons === */
+.folder {
+    width: 190px;
+    height: 125px;
+    background: #c6a76a;
+    border: 2px solid #b08c4f;
+    border-radius: 6px;
+    position: relative;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    padding-top: 40px;
+    text-align: center;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* Folder tab */
+.folder::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    width: 90px;
+    height: 20px;
+    background: #d6b47b;
+    border: 2px solid #b08c4f;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Hover animation */
+.folder:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+/* Click (open) animation */
+.folder:active {
+    transform: scale(0.97);
+}
+
+/* Smooth fade for dossier pages */
+.dossier {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #1a1a1d;
+    padding: 30px;
+    border: 1px solid #34343b;
+    opacity: 0;
+    animation: dossierEnter 0.6s ease forwards;
+}
+
+@keyframes dossierEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === CRT Screen Effect (Optional) === */
+.dossier {
+    position: relative;
+    overflow: hidden;
+}
+
+.dossier::after {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 2px,
+        transparent 4px
+    );
+    opacity: 0.18;
+}
+
+/* === Redacted Block === */
+.redacted {
+    background: black;
+    color: black;
+    padding: 0 8px;
+    border-radius: 3px;
+}
